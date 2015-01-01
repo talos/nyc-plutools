@@ -6,5 +6,5 @@ for archive in data/archives/*.zip; do
   base=$(basename $archive .zip)
   mkdir -p data/unzipped/$base
   unzip -n -d data/unzipped/$base $archive
-  rm $archive
+  #rm $archive
 done
