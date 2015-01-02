@@ -10,20 +10,18 @@ for release in data/unzipped/*/; do
     info "Concatenating $release into data/concatenated/$base.csv"
 
     # Add headers to 'all' file
-    LANG="CP-1252" \
+    LC_ALL=C LANG=C \
       ls $release*.csv $release*.CSV $release*.txt $release*.TXT 2>/dev/null | \
-      head -n 1 | \
+      tail -n 1 | \
       xargs head -n 1 | \
-      tr -d '\r\0' | \
       sed -E 's/ +/ /g' \
       > data/concatenated/$base.csv
 
     # Pipe in data
-    LANG="CP-1252" \
+    LC_ALL=C LANG=C \
       ls $release*.csv $release*.CSV $release*.txt $release*.TXT 2>/dev/null | \
       xargs tail -q -n +2 | \
-      tr -d '\r\0' | \
-      sed 's/[^[:print:]]//' | \
+      sed 's/[^[:print:]]//g' | \
       sed -E 's/ +/ /g' \
       >> data/concatenated/$base.csv
 
