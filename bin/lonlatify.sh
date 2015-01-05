@@ -19,7 +19,7 @@ for release in data/sqlite/*.db; do
 SELECT * FROM `'$table'`
 LIMIT 1;
     ' | sqlite3 $release \
-    | head -n 1
+    | head -n 1 \
     > data/lonlat/$table.csv
 
     # Print rest of data
@@ -35,7 +35,7 @@ SELECT
     | sed -E 's/[[:space:]]+##END##//' \
     | sed 's/^#/	/' \
     | sed 's/ 	/	/g' \
-    | sed 's/ $//g'
+    | sed 's/ $//g' \
     > data/lonlat/$table.csv
 
   else
