@@ -7,10 +7,13 @@ data/unzipped: $(wildcard data/archives/*.zip)
 data/concatenated: $(wildcard data/unzipped/*)
 	./bin/concatenate.sh
 
-lonlatify: $(wildcard data/concatenated/*)
+sqlitify: $(wildcard data/concatenated/*)
 	./bin/lonlatify.sh
 
-datify:
+lonlatify: $(wildcard data/sqlite/*)
+	./bin/lonlatify.sh
+
+datify: $(wildcard data/lonlat/*)
 	./bin/datify.sh
 
 #all: data/archives data/unzipped data/concatenated lonlatify datify
