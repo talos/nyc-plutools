@@ -36,7 +36,7 @@ SELECT
     | sed 's/^#/	/' \
     | sed 's/ 	/	/g' \
     | sed 's/ $//g' \
-    > data/lonlat/$table.csv
+    >> data/lonlat/$table.csv
 
   else
     info "Already added lonlat to $release"
