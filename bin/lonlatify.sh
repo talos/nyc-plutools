@@ -20,7 +20,7 @@ SELECT * FROM `'$table'`
 LIMIT 1;
     ' | sqlite3 $release \
     | head -n 1 \
-    > data/lonlat/$table.csv
+    >> data/lonlat/$table.csv
 
     # Print rest of data
     echo '
