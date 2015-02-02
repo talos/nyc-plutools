@@ -27,7 +27,7 @@ LIMIT 1;
 .headers off
 .mode tabs
 SELECT
-  CASE XCoord WHEN " " THEN "#" ELSE XCoord END,
+  CASE WHEN XCoord IS NULL THEN "#" ELSE XCoord END,
     YCoord, "##END##", *
   FROM `'$table'`;' \
     | sqlite3 $release \
